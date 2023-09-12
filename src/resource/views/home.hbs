@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="row justify-content-sm-between">
+        {{#each finances}}
+            <div class="card card-config-basis col-sm-4 mt-4">
+                <a href="/finance/{{this.slug}}">
+                    <img src="{{this.img}}" class="card-img-top" alt="...">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">{{this.name}}</h5>
+                    <a href="/finance/{{this.slug}}" class="btn btn-primary">Learn</a>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</div>

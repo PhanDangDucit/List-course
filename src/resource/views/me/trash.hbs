@@ -1,0 +1,76 @@
+<div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">STT</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">level</th>
+                    <th scope="col">Functionality</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each finances}}
+                <tr>
+                <th scope="row">{{sum @index 1}}</th>
+                    <td>{{this.name}}</td>
+                    <td>{{this.author}}</td>
+                    <td>{{this.level}}</td>
+                    <td>
+                        <a href="/me/{{this._id}}/restore" class="btn-restore" data-bs-id="{{this._id}}">Restore</a>
+                        <a href="" data-bs-toggle="modal" data-bs-target="#deleteVideo" data-bs-id="{{this._id}}">Delete Force</a>
+                    </td>
+                </tr>
+                
+                {{/each}}
+            </tbody>
+        </table>
+</div>
+
+{{!-- Form confirm delete --}}
+<form method="post" id="form-confirm-delete"></form>
+<form method="POST" name="form-restore"></form>
+
+<!-- Modal -->
+<div class="modal fade" id="deleteVideo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" id="btn-delete-force" data-bs-dismiss="modal">Delete Force</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var deleteVideo = document.getElementById('deleteVideo');
+    var videoID;
+    deleteVideo.addEventListener('show.bs.modal', function (e) {
+        videoID = e.relatedTarget.getAttribute('data-bs-id')
+    });
+    var btnDeleteForce = document.getElementById('btn-delete-force');
+    btnDeleteForce.onclick = function(e) {
+        var formConfirmDelete = document.getElementById('form-confirm-delete');
+        formConfirmDelete.action = `/me/${videoID}/deleteForce?_method=DELETE`
+        formConfirmDelete.submit();
+    };
+      $('.btn-restore').click(function(e) {
+        e.preventDefault();
+        var videoID = $(this).data('bsId');
+        console.log(videoID);
+        console.log('hello')
+          var formRestore = document.forms["form-restore"];
+          formRestore.action = `/me/${videoID}/restore?_method=PATCH`;
+          console.log(formRestore);
+          formRestore.submit();
+      })
+  })
+</script>

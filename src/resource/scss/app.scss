@@ -1,0 +1,19 @@
+@import 'variables';
+
+body {
+    background-color: $color-page;
+}
+.img-icon-nav {
+    width: 80px;
+    height: 100%;
+}
+h1 {
+    color: $color-h1;
+}
+.container .card.card-config-basis {
+    flex-basis: 30%;
+}
+.select-all-quantity {
+    width: 160px;
+    margin: 0 16px;
+}

@@ -1,0 +1,25 @@
+<div class="container">
+    <form method="post" action="/me/{{finance._id}}/update?_method=PATCH">
+        <div class="mb-3">
+            <label for="name-video" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name-video" value="{{finance.name}}" name="name" placeholder="name...">
+        </div>
+        <div class="mb-3">
+            <label for="author-video" class="form-label">Author</label>
+            <input type="text" class="form-control" id="author-video" value="{{finance.author}}" name="author" placeholder="author...">
+        </div>
+        <div class="mb-3">
+            <label for="VideoID-video" class="form-label">VideoID</label>
+            <input type="text" class="form-control" id="VideoID-video" value="{{finance.videoID}}" name="videoID" placeholder="videoID...">
+        </div>
+        <div class="mb-3">
+            <label for="level-video" class="form-label">Level</label>
+            <input type="text" class="form-control" id="level-video" value="{{finance.level}}" name="level" placeholder="level...">
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label"></label>
+            <textarea class="form-control" id="description" rows="3">{{finance.description}}</textarea>
+        </div>
+        <button type="submit">Update</button>
+    </form>
+</div>
